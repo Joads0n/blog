@@ -1,15 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const routes = require('./routes');
 
 const app = express();
+const port = 3000;
 
-app.use(bodyParser.json());
-
-const port = 8080;
-
-app.get('/test', (req, res) => {
-    res.status(200).send();
-})
+routes(app);
 
 app.listen(port, () => {
     console.log(`SEVER ON PORT: ${port}`)

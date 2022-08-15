@@ -7,5 +7,6 @@ router
     .get('/roles', RoleController.getAllRoles)
     .get('/roles/:id', RoleController.getRoleId)
     .post('/roles', RoleController.createRole)
+    .put('/roles/:id', RoleController.updateRole)
 
 module.exports = router;

@@ -34,6 +34,22 @@ class RoleController {
       return res.status(500).json(error.message);
     }
   }
+
+  static async updateRole(req, res) {
+    const { id } = req.params;
+    const data = req.body;
+    try {
+      await model.Roles.update(data, { where: { id: Number(id) } })
+      const updatedRole = await model.Roles.findOne({
+        where: {
+          id: Number(id)
+        }
+      })  
+      return res.status(200).json(updatedRole);  
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
 }
 
 module.exports = RoleController;

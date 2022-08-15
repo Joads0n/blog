@@ -24,6 +24,16 @@ class RoleController {
       return res.status(500).json(error.message);
     }
   }
+
+  static async createRole(req, res) {
+    const { role } = req.body;
+    try {
+      const newRole = await model.Roles.create(role)
+      return res.status(200).json(newRole);  
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
 }
 
 module.exports = RoleController;

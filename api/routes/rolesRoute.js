@@ -8,5 +8,6 @@ router
     .get('/roles/:id', RoleController.getRoleId)
     .post('/roles', RoleController.createRole)
     .put('/roles/:id', RoleController.updateRole)
+    .delete('/roles/:id', RoleController.deleteRole)
 
 module.exports = router;

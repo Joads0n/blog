@@ -1,10 +1,15 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
     static associate(models) {
+      Users.hasMany(models.Posts, {
+        foreignKey: "editor_id",
+      });
+      Users.belongsTo(models.Roles, {
+        foreignKey: "role_id",
+      });
     }
   }
   Users.init({

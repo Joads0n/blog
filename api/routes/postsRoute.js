@@ -7,7 +7,7 @@ router
     .get('/posts', PostController.getAllPosts)
     .get('/posts/:id', PostController.getPostId)
     .post('/posts', PostController.createPost)
-    .put('/posts/:id', PostController)
-    .delete('/posts/:id', PostController)
+    .put('/posts/:id', PostController.updatePost)
+    .delete('/posts/:id', PostController.deletePost)
 
 module.exports = router;

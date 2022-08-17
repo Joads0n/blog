@@ -40,38 +40,34 @@ class PostController {
     }
   }
 
-  static async updateUser(req, res) {
+  static async updatePost(req, res) {
     const { id } = req.params;
     const data = req.body;
     try {
-      await model.Users.update(data, { where: { id: Number(id) } });
-      const updatedUser = await model.Users.findOne({
+      await model.Posts.update(data, { where: { id: Number(id) } });
+      const updatedPost = await model.Posts.findOne({
         where: {
           id: Number(id)
         }
       }); 
-      return res.status(200).json(updatedUser);  
+      return res.status(200).json(updatedPost);  
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
 
-  static async deleteUser(req, res) {
+  static async deletePost(req, res) {
     const { id } = req.params;
     try {
-      await model.Users.destroy({
+      await model.Posts.destroy({
         where: {
           id: Number(id)
         }
       }); 
-      return res.status(200).json(`O usuário de ID=${id} foi deletado com sucesso.`);  
+      return res.status(200).json(`O Post de ID=${id} foi deletado com sucesso.`);  
     } catch (error) {
       return res.status(500).json(error.message);
     }
-  }
-
-  static async convertDate(date) {
-    return date.split("/").reverse().join("-");
   }
 }
 

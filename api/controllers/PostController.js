@@ -69,6 +69,23 @@ class PostController {
       return res.status(500).json(error.message);
     }
   }
+
+  static async getPostByEditor(req, res) {
+    const { editor_id } = req.params;
+    try {
+      const post = await model.Posts.findOne({
+        where: {
+          editor_id: Number(editor_id)
+        }
+      });
+      if (post === null) {
+        return res.status(200).json(`Não foi localizado nenhum post do editor de id=${editor_id}.`); 
+      }
+      return res.status(200).json(post);  
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
 }
 
 module.exports = PostController;
